@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Women Safe Cab Booking System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Women Safe Cab Booking</h1>
+    <p>Safe • Verified • Secure Transportation</p>
+</header>
+
+<nav id="mainNav">
+    <button onclick="showSection('book')">Book Ride</button>
+    <button onclick="showSection('rideStatus')">Ride Status</button>
+    <button onclick="showSection('driverPanel')">Driver Panel</button>
+    <button onclick="showSection('jobs')">Driving Jobs</button>
+    <button onclick="showSection('feedback')">Feedback</button>
+    <button onclick="showSection('emergency')">Emergency</button>
+    <button onclick="logout()">Logout</button>
+</nav>
+
+<!-- LOGIN -->
+<section id="login">
+    <div class="card">
+        <h2>Login</h2>
+        <select id="loginType">
+            <option value="passenger">Passenger</option>
+            <option value="driver">Driver</option>
+        </select>
+        <input id="username" placeholder="Username">
+        <input id="password" type="password" placeholder="Password">
+        <button class="btn" onclick="login()">Login</button>
+        <br><br>
+        <p>New User?</p>
+        <button class="btn" onclick="showSection('register')">Register</button>
+    </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register">
+    <div class="card">
+        <h2>Register</h2>
+        <select id="regType">
+            <option value="passenger">Passenger</option>
+            <option value="driver">Driver</option>
+        </select>
+        <input id="regUser" placeholder="Username">
+        <input id="regPass" type="password" placeholder="Password">
+        <button class="btn" onclick="register()">Create Account</button>
+        <br><br>
+        <button class="btn" onclick="showSection('login')">Back to Login</button>
+    </div>
+</section>
+
+<!-- BOOK RIDE -->
+<section id="book">
+    <div class="card">
+        <h2>Book Ride</h2>
+        <input id="passengerName" placeholder="Passenger Name">
+        <input id="pickup" placeholder="Pickup Location">
+        <input id="drop" placeholder="Drop Location">
+        <button class="btn" onclick="bookRide()">Book Ride</button>
+    </div>
+</section>
+
+<!-- RIDE STATUS -->
+<section id="rideStatus">
+    <div class="card">
+        <h2>Ride Status</h2>
+        <div id="rideInfo">No ride booked yet.</div>
+        <br>
+        <button class="btn sos" onclick="sendSOS()">🚨 SOS Emergency</button>
+        <button class="btn" onclick="fakeCall()">📞 Fake Call</button>
+        <button class="btn" onclick="routeCheck()">Check Route Safety</button>
+    </div>
+    <div class="card">
+        <h3>Driver Panel</h3>
+        <button class="btn" onclick="driverAcceptRide()">Driver Accept Ride</button>
+    </div>
+</section>
+
+<!-- DRIVER PANEL -->
+<section id="driverPanel">
+    <div class="card">
+        <h2>Driver Dashboard</h2>
+        <p>Pending Requests: <span id="pendingCount">0</span></p>
+        <button class="btn" onclick="loadRideRequests()">Load Ride Requests</button>
+        <div id="driverRides"></div>
+    </div>
+    <div class="card">
+        <h3>OTP Verification</h3>
+        <input id="driverOTP" placeholder="Enter passenger OTP">
+        <button class="btn" onclick="verifyOTP()">Start Ride</button>
+        <button class="btn" onclick="completeRide()">Complete Ride</button>
+    </div>
+    <div class="card">
+        <h3>Ride History</h3>
+        <div id="rideHistoryView"></div>
+    </div>
+</section>
+
+<!-- DRIVING JOBS -->
+<section id="jobs">
+    <div class="card">
+        <h2>Apply for Driving Job</h2>
+        <input id="jobName" placeholder="Full Name">
+        <input id="jobPhone" placeholder="Phone Number">
+        <input id="vehicleType" placeholder="Vehicle Type">
+        <input id="experience" placeholder="Driving Experience (years)">
+        <button class="btn" onclick="applyDriver()">Submit Application</button>
+    </div>
+    <div class="card">
+        <h3>Applications</h3>
+        <div id="jobList"></div>
+    </div>
+</section>
+
+<!-- FEEDBACK -->
+<section id="feedback">
+    <div class="card">
+        <h2>Passenger Feedback</h2>
+        <input id="fbName" placeholder="Your Name">
+        <select id="rating">
+            <option>5 ⭐ Excellent</option>
+            <option>4 ⭐ Good</option>
+            <option>3 ⭐ Average</option>
+            <option>2 ⭐ Poor</option>
+            <option>1 ⭐ Bad</option>
+        </select>
+        <textarea id="comment" placeholder="Write feedback"></textarea>
+        <button class="btn" onclick="submitFeedback()">Submit Feedback</button>
+    </div>
+    <div class="card">
+        <h3>Feedback List</h3>
+        <div id="feedbackList"></div>
+    </div>
+</section>
+
+<!-- EMERGENCY -->
+<section id="emergency">
+    <div class="card">
+        <h2>Emergency Contacts</h2>
+        <input id="contactName" placeholder="Name">
+        <input id="contactPhone" placeholder="Phone">
+        <button class="btn" onclick="addContact()">Add Contact</button>
+        <ul id="contactList"></ul>
+    </div>
+</section>
+
+<footer>
+    © 2026 Women Safe Cab Booking
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
